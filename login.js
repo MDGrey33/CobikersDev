@@ -1,5 +1,5 @@
 /**
- * Sample React Native App
+ * Uses as Sample React Native App Login.ios.js
  * https://github.com/facebook/react-native
  * @flow
  */
