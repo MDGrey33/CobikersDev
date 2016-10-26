@@ -17,14 +17,7 @@ export default class Login extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to Login Page!!
-        </Text>
-        <Text style={styles.instructions}>
-          The intention is to include it and run it on Index after rendering text
-        </Text>
-        <Text style={styles.instructions}>
-          Armands,{'\n'}
-          can you provide a small tutorial that is up to date on how to call a funciton from an other fiel
+        Login Page
         </Text>
       </View>
     );
@@ -41,7 +34,7 @@ const styles = StyleSheet.create({
   welcome: {
     fontSize: 20,
     textAlign: 'center',
-    margin: 10,
+    margin: 100,
   },
   instructions: {
     textAlign: 'center',
