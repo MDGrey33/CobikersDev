@@ -27,7 +27,11 @@ class Remote {
 
     setPins(location){
 
-        this.geoFire.set("some_key", [loaction.long, long.lat]).then(() => {
+        var timestamp = location.timestamp;
+        timestamp = timestamp.toString();
+        timestamp = timestamp.substring(0, timestamp.indexOf('.'));
+
+        this.geoFire.set(timestamp, [location.lat, location.long]).then(() => {
             console.log("Provided key has been added to GeoFire");
         }, (error) => {
             console.log("Error: " + error);
@@ -37,7 +41,7 @@ class Remote {
 
     getPins(){
 
-        this.geoFire.get("some_key").then((location) => {
+        this.geoFire.get("police").then((location) => {
             if (location === null) {
                 console.log("Provided key is not in GeoFire");
             }

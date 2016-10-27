@@ -48,7 +48,7 @@ var styles = StyleSheet.create({
         justifyContent:"center",
     },
     text: {
-        fontSize:18,
+        fontSize:20,
         backgroundColor:"transparent",
         color:"white",
         alignSelf:"center",
