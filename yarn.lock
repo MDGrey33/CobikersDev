@@ -3811,6 +3811,10 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-maps:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.11.0.tgz#8baa56eef83e9f2f04a70b192624b7bc9c56289d"
+
 react-native@0.36.0:
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.36.0.tgz#3ce19cebcf99e2dc5a889cbb74201ef63ecb6a55"

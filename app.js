@@ -5,6 +5,8 @@ import {
     Text
 } from 'react-native';
 
+import MapContainer from './Containers/MapContainer.js';
+
 class App extends Component {
 
     constructor(props){
@@ -17,7 +19,7 @@ class App extends Component {
 
         return(
             <View>
-                <Text>Map</Text>
+                <MapContainer />
             </View>
         );
 
