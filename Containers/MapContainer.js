@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Map from '../Components/Map';
+import Button from '../Components/Button';
 
 class MapContainer extends Component{
 
@@ -21,6 +22,7 @@ class MapContainer extends Component{
         return(
             <View style={styles.content}>
                 <Map />
+                <Button title={"POLICE"} style={styles.policeButton} />
             </View>
         );
 
@@ -29,8 +31,10 @@ class MapContainer extends Component{
 }
 
 var styles = StyleSheet.create({
-    content: {
-        
+    policeButton: {
+        position:"absolute",
+        bottom:20,
+        right:20,
     }
 });
 

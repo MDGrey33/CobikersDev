@@ -4,7 +4,7 @@ import {
     View,
     Text,
     StyleSheet,
-    TOuchableOpacity,
+    TouchableOpacity,
 } from 'react-native';
 
 class Button extends Component{
@@ -15,11 +15,23 @@ class Button extends Component{
 
     }
 
+    onPress(){
+
+        if(this.props.onPress){
+
+            this.props.onPress();
+
+        }
+
+    }
+
     render(){
 
         return(
-            <View style={styles.content}>
-                <Text>Button</Text>
+            <View style={this.props.style}>
+                <TouchableOpacity activeOpacity={0.8} style={styles.buttonContainer} onPress={() => this.onPress()}>
+                    <Text style={styles.text}>{this.props.title}</Text>
+                </TouchableOpacity>
             </View>
         );
 
@@ -28,8 +40,18 @@ class Button extends Component{
 }
 
 var styles = StyleSheet.create({
-    content: {
-        
+    buttonContainer: {
+        backgroundColor:"#FF5E3A",
+        width:100,
+        height:100,
+        borderRadius:50,
+        justifyContent:"center",
+    },
+    text: {
+        fontSize:18,
+        backgroundColor:"transparent",
+        color:"white",
+        alignSelf:"center",
     }
 });
 

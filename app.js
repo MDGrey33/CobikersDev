@@ -23,7 +23,7 @@ class App extends Component {
 
         return(
             <View>
-                <MapContainer />
+                <MapContainer remote={this.remote} />
             </View>
         );
 

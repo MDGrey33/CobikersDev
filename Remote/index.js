@@ -21,7 +21,7 @@ class Remote {
 
         //Init geofire
         this.geoFire = new GeoFire(this.firebaseRef);
-        this.geoRef = geoFire.ref();  // ref === firebaseRef
+        this.geoRef = this.geoFire.ref();  // ref === firebaseRef
 
     }
 
