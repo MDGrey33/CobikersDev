@@ -7,9 +7,13 @@ import {
     Dimensions,
 } from 'react-native';
 
+import _ from 'lodash';
+
 import MapView from 'react-native-maps';
 
 import {PROVIDER_DEFAULT} from 'react-native-maps';
+
+var policeIcon = require("../../Images/police.png");
 
 const { width, height } = Dimensions.get('window');
 
@@ -39,6 +43,28 @@ class Map extends Component{
 
     }
 
+    renderPins(pins){
+
+        var data = [];
+
+        _.forIn(pins, (value,key) => {
+            console.log("Pin",value);
+            data.push(
+                <MapView.Marker 
+                    title={"Police"}
+                    image={policeIcon}
+                    coordinate={value}
+                    flat={true}
+                    identifier={key}
+                    key={key}
+                />
+            )
+        });
+
+        return data;
+
+    }
+
     render(){
 
         return(
@@ -46,16 +72,17 @@ class Map extends Component{
                 <MapView
                     provider={PROVIDER_DEFAULT}
                     style={styles.map}
-                    scrollEnabled={false}
+                    scrollEnabled={true}
                     zoomEnabled={true}
-                    pitchEnabled={false}
+                    pitchEnabled={true}
                     rotateEnabled={true}
                     showsCompass={true}
                     followsUserLocation={true}
                     showsUserLocation={true}
                     showsMyLocationButton={true}
-                    cacheEnabled={true}
+
                 >
+                {this.renderPins(this.props.pins)}
                 </MapView>
             </View>
         );

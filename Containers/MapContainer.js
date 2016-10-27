@@ -19,18 +19,15 @@ class MapContainer extends Component{
 
     addPolice(){
 
-        console.log("adding police");
-        console.log("remote",this.props.remote);
-
         navigator.geolocation.getCurrentPosition(
         (position) => {
-            var initialPosition = JSON.stringify(position);
+            
             var location = {
                 lat:position.coords.latitude,
                 long:position.coords.longitude,
                 timestamp:position.timestamp,
             }
-            console.log(position);
+            
             this.props.remote.setPins(location);
         },
         (error) => alert(JSON.stringify(error)),
@@ -43,7 +40,7 @@ class MapContainer extends Component{
 
         return(
             <View style={styles.content}>
-                <Map />
+                <Map pins={this.props.pins}/>
                 <Button title={"POLICE"} onPress={() => this.addPolice()} style={styles.policeButton} />
             </View>
         );

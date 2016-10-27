@@ -12,9 +12,11 @@ const firebaseConfig = {
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
+const radius = 11;
+
 class Remote {
 
-    constructor(){
+    constructor(onEntered = null){
         
         //Init firebase
         this.firebaseRef = firebaseApp.database().ref();
@@ -23,8 +25,51 @@ class Remote {
         this.geoFire = new GeoFire(this.firebaseRef);
         this.geoRef = this.geoFire.ref();  // ref === firebaseRef
 
+        //Init geoQuery
+        this.geoQuery = null;
+
+        //Initialize the callback for data updates to the views
+        this.onEntered = onEntered;
+
     }
 
+    //Initializes the geo query data
+    setInitialLocation(location){
+
+        this.geoQuery = this.geoFire.query({
+            center: [location.lat, location.long],
+            radius: radius
+        });
+
+        this.onKeyEnteredRegistration = this.geoQuery.on("key_entered", (key, location, distance) => {
+            //console.log(key + " entered query at " + location + " (" + distance + " km from center)");
+            this.updateVisiblePins(key, location, distance);
+
+        });
+
+    }
+
+    updateQueryLocation(location){
+
+        this.geoQuery.updateCriteria({
+            center: [location.lat, location.long],
+            radius: radius
+        });
+
+
+    }
+
+    updateVisiblePins(key, location, distance){
+
+        if(this.onEntered){
+            this.onEntered(key, location, distance);
+        }else{
+            console.warn("No onEntered callback found!");
+        }
+
+    }
+
+    //Saves a pin
     setPins(location){
 
         var timestamp = location.timestamp;
@@ -37,20 +82,6 @@ class Remote {
             console.log("Error: " + error);
         });
 
-    }
-
-    getPins(){
-
-        this.geoFire.get("police").then((location) => {
-            if (location === null) {
-                console.log("Provided key is not in GeoFire");
-            }
-            else {
-                console.log("Provided key has a location of " + location);
-            }
-            }, (error) => {
-            console.log("Error: " + error);
-        });
     }
 
 }
