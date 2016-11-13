@@ -26,7 +26,7 @@ class App extends Component {
     }
 
     addNewPins(key, location, distance){
-   
+        
         var pins = this.state.pins;
         pins[key] = {
             latitude: location[0],

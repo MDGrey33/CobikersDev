@@ -14,6 +14,9 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const radius = 11;
 
+//2 hours to delete a pin
+const TIMEOUT = 2 * 3600000;
+
 class Remote {
 
     constructor(onEntered = null){
@@ -61,10 +64,18 @@ class Remote {
 
     updateVisiblePins(key, location, distance){
 
-        if(this.onEntered){
-            this.onEntered(key, location, distance);
+        if(this.isPinOld(key)){
+
+            this.removePins(key);
+
         }else{
-            console.warn("No onEntered callback found!");
+
+            if(this.onEntered){
+                this.onEntered(key, location, distance);
+            }else{
+                console.warn("No onEntered callback found!");
+            }
+
         }
 
     }
@@ -78,6 +89,26 @@ class Remote {
 
         this.geoFire.set(timestamp, [location.lat, location.long]).then(() => {
             console.log("Provided key has been added to GeoFire");
+        }, (error) => {
+            console.log("Error: " + error);
+        });
+
+    }
+
+    //Checks if the pin has timed out 
+    isPinOld(key){
+
+        var now = new Date();
+
+        return now.getTime() - key > TIMEOUT;
+
+    }
+
+    //Removes an old pin so others won't see it
+    removePins(key){
+
+        this.geoFire.remove(key).then(() => {
+            console.log("Provided key has been removed from GeoFire");
         }, (error) => {
             console.log("Error: " + error);
         });

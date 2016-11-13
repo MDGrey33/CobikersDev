@@ -48,7 +48,7 @@ class Map extends Component{
         var data = [];
 
         _.forIn(pins, (value,key) => {
-            console.log("Pin",value);
+            
             data.push(
                 <MapView.Marker 
                     title={"Police"}
