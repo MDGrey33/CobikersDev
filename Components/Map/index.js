@@ -57,6 +57,7 @@ class Map extends Component{
                     flat={true}
                     identifier={key}
                     style={{width:30,height:30}}
+                    centerOffset={{x:0,y:-20}}
                     key={key}
                 />
             )
