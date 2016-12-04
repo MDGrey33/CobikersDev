@@ -768,7 +768,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.org.react.native.cobikers;
+				PRODUCT_BUNDLE_IDENTIFIER = org.react.native.cobikers;
 				PRODUCT_NAME = CobikersDev;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -793,7 +793,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.org.react.native.cobikers;
+				PRODUCT_BUNDLE_IDENTIFIER = org.react.native.cobikers;
 				PRODUCT_NAME = CobikersDev;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
