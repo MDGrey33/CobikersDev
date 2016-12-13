@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import Map from '../Components/Map';
+
 import Button from '../Components/Button';
 
 class MapContainer extends Component{
@@ -15,6 +16,7 @@ class MapContainer extends Component{
 
         super(props);
 
+        console.log("test");
     }
 
     addPolice(){
@@ -40,7 +42,11 @@ class MapContainer extends Component{
 
         return(
             <View style={styles.content}>
-                <Map pins={this.props.pins}/>
+                <Map 
+                    provider="google" 
+                    mapType="hybrid"
+                    style={styles.map} 
+                    pins={this.props.pins}/>
                 <Button title={"POLICE"} onPress={() => this.addPolice()} style={styles.policeButton} />
             </View>
         );
@@ -54,7 +60,11 @@ var styles = StyleSheet.create({
         position:"absolute",
         bottom:20,
         right:20,
-    }
+    },
+    content: {
+        flex:1,
+    },
+
 });
 
 module.exports = MapContainer;
