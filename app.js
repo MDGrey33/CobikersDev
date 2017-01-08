@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import MapContainer from './Containers/MapContainer.js';
-import Orientation from 'react-native-orientation';
+//import Orientation from 'react-native-orientation';
 import codePush from "react-native-code-push";
 
 import Remote from './Remote';
@@ -30,7 +30,7 @@ class App extends Component {
 
     componentWillMount(){
 
-        this.current_orientation = Orientation.getInitialOrientation();
+//        this.current_orientation = Orientation.getInitialOrientation();
 
     }
 
