@@ -47,7 +47,7 @@ class MapContainer extends Component{
                     mapType="hybrid"
                     style={styles.map} 
                     pins={this.props.pins}/>
-                <Button title={"POLICE"} onPress={() => this.addPolice()} style={styles.policeButton} />
+                <Button title={"CHECKPOINT"} onPress={() => this.addPolice()} style={styles.policeButton} />
             </View>
         );
 
@@ -60,6 +60,7 @@ var styles = StyleSheet.create({
         position:"absolute",
         bottom:20,
         right:20,
+        fontSize:1,
     },
     content: {
         flex:1,
