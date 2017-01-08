@@ -46,17 +46,18 @@ class App extends Component {
         });
 
     }
-    _orientationDidChange(orientation) {
 
-        if(this.current_orientation != orientation){
-            codePush.restartApp();
-        }
+//    _orientationDidChange(orientation) {
 
-    }
+//        if(this.current_orientation != orientation){
+//            codePush.restartApp();
+//        }
+
+//    }
 
     componentDidMount() {
 
-        Orientation.addOrientationListener(this._orientationDidChange.bind(this));
+//        Orientation.addOrientationListener(this._orientationDidChange.bind(this));
 
         navigator.geolocation.getCurrentPosition(
             (position) => {
