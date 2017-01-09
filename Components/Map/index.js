@@ -14,6 +14,7 @@ import MapView from 'react-native-maps';
 import {PROVIDER_DEFAULT} from 'react-native-maps';
 
 var policeIcon = require("../../Images/police.png");
+var radarIcon = require("../../Images/radar.png");
 
 const { width, height } = Dimensions.get('window');
 
