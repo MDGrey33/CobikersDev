@@ -7,7 +7,7 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-class Button extends Component{
+export default class Button extends Component{
 
     constructor(props){
 
@@ -54,5 +54,3 @@ var styles = StyleSheet.create({
         alignSelf:"center",
     }
 });
-
-module.exports = Button;
