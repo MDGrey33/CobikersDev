@@ -1,6 +1,6 @@
 # CobikersDev
 ### React-Native Version
-#### 0.36.0
+#### January 2017 (0.41.2)
 
 ### Supported OS versions
 
@@ -21,7 +21,7 @@ git clone https://github.com/MDGrey33/CobikersDev.git
 ```
 Install dependencies
 ```sh
-cd CobikersDev && yarn
+cd CobikersDev && npm install
 ```
 Link dependencies
 ```sh
