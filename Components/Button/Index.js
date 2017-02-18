@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 
 import {
     View,
@@ -7,17 +7,21 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-export default class Button extends Component{
+const { BlurView } = require('react-native-blur');
 
-    constructor(props){
+import Icon from 'react-native-vector-icons/Ionicons';
+
+export default class Button extends Component {
+
+    constructor(props) {
 
         super(props);
 
     }
 
-    onPress(){
+    onPress() {
 
-        if(this.props.onPress){
+        if (this.props.onPress) {
 
             this.props.onPress();
 
@@ -25,12 +29,14 @@ export default class Button extends Component{
 
     }
 
-    render(){
+    render() {
 
-        return(
+        return (
             <View style={this.props.style}>
                 <TouchableOpacity activeOpacity={0.8} style={styles.buttonContainer} onPress={() => this.onPress()}>
-                    <Text style={styles.text}>{this.props.title}</Text>
+                    <BlurView blurType="dark" blurAmount={5} style={styles.blur}>
+                        <Icon style={styles.icon} name={this.props.icon} size={55} color="white" />
+                    </BlurView>
                 </TouchableOpacity>
             </View>
         );
@@ -41,16 +47,26 @@ export default class Button extends Component{
 
 var styles = StyleSheet.create({
     buttonContainer: {
-        backgroundColor:"#FF5E3A",
-        width:100,
-        height:100,
-        borderRadius:50,
-        justifyContent:"center",
+        width: 80,
+        height: 80,
+        borderRadius: 5,
+        justifyContent: "center",
+        margin: 5,
+        marginBottom:10,
     },
     text: {
-        fontSize:15,
-        backgroundColor:"transparent",
-        color:"white",
-        alignSelf:"center",
+        fontSize: 12,
+        backgroundColor: "transparent",
+        color: "white",
+        alignSelf: "center",
+    },
+    icon: {
+        alignSelf: "center",
+    },
+    blur: {
+        width: 80,
+        height: 80,
+        borderRadius:5,
+        justifyContent: "center",
     }
 });
