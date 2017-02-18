@@ -28,9 +28,9 @@ class App extends Component {
 
     }
 
-    componentWillMount(){
+    componentWillMount() {
 
-//        this.current_orientation = Orientation.getInitialOrientation();
+        //this.current_orientation = Orientation.getInitialOrientation();
 
     }
 
@@ -42,25 +42,27 @@ class App extends Component {
         pins[key] = {
             latitude: location[0],
             longitude: location[1],
-            type:type,
+            type: type,
         }
+        
         this.setState({
             pins: pins,
         });
 
     }
 
-//    _orientationDidChange(orientation) {
 
-//        if(this.current_orientation != orientation){
-//            codePush.restartApp();
-//        }
+    _orientationDidChange(orientation) {
 
-//    }
+        if (this.current_orientation != orientation) {
+            codePush.restartApp();
+        }
+
+    }
 
     componentDidMount() {
 
-//        Orientation.addOrientationListener(this._orientationDidChange.bind(this));
+        //Orientation.addOrientationListener(this._orientationDidChange.bind(this));
 
         navigator.geolocation.getCurrentPosition(
             (position) => {

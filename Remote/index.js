@@ -15,7 +15,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const radius = 11;
 
 //6 hours to delete a pin
-const TIMEOUT = 1000;//6 * 3600000;
+const TIMEOUT = 60000//6 * 3600000;
 
 class Remote {
 

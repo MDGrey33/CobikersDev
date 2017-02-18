@@ -47,7 +47,7 @@ class Map extends Component{
     renderPins(pins){
 
         var data = [];
-
+        
         _.forIn(pins, (value,key) => {
             
             data.push(
