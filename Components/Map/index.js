@@ -53,7 +53,7 @@ class Map extends Component{
             data.push(
                 <MapView.Marker 
                     title={"Police"}
-                    image={policeIcon}
+                    image={value.type == "police" ? policeIcon : radarIcon}
                     coordinate={value}
                     flat={true}
                     identifier={key}

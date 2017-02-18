@@ -36,10 +36,13 @@ class App extends Component {
 
     addNewPins(key, location, distance) {
 
+        var timestamp = key.split("_")[1];
+        var type = key.split("_")[0];
         var pins = this.state.pins;
         pins[key] = {
             latitude: location[0],
             longitude: location[1],
+            type:type,
         }
         this.setState({
             pins: pins,

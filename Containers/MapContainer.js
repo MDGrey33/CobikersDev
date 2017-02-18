@@ -30,7 +30,26 @@ class MapContainer extends Component{
                 timestamp:position.timestamp,
             }
             
-            this.props.remote.setPins(location);
+            this.props.remote.setPins(location,"police");
+        },
+        (error) => alert(JSON.stringify(error)),
+            {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+        );
+
+    }
+
+    addRadar(){
+
+        navigator.geolocation.getCurrentPosition(
+        (position) => {
+            
+            var location = {
+                lat:position.coords.latitude,
+                long:position.coords.longitude,
+                timestamp:position.timestamp,
+            }
+            
+            this.props.remote.setPins(location,"radar");
         },
         (error) => alert(JSON.stringify(error)),
             {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
@@ -47,6 +66,7 @@ class MapContainer extends Component{
                     mapType="hybrid"
                     style={styles.map} 
                     pins={this.props.pins}/>
+                <Button title={"SPEED CAM"} onPress={() => this.addRadar()} style={styles.radarButton} />
                 <Button title={"CHECKPOINT"} onPress={() => this.addPolice()} style={styles.policeButton} />
             </View>
         );
@@ -60,7 +80,11 @@ var styles = StyleSheet.create({
         position:"absolute",
         bottom:20,
         right:20,
-        fontSize:1,
+    },
+    radarButton: {
+        position:"absolute",
+        bottom:20,
+        right:135,
     },
     content: {
         flex:1,
