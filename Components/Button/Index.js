@@ -35,7 +35,7 @@ export default class Button extends Component {
             <View style={this.props.style}>
                 <TouchableOpacity activeOpacity={0.8} style={styles.buttonContainer} onPress={() => this.onPress()}>
                     <BlurView blurType="dark" blurAmount={5} style={styles.blur}>
-                        <Icon style={styles.icon} name={this.props.icon} size={55} color="white" />
+                        <Icon style={styles.icon} name={this.props.icon} size={55} color={this.props.color ? this.props.color : "white"} />
                     </BlurView>
                 </TouchableOpacity>
             </View>

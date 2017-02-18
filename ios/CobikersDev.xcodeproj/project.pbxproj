@@ -213,13 +213,6 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
-		407126F71E55EA550066C77F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D36C1278CC724B6CB1CA749C /* CodePush.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = CodePush;
-		};
 		407127521E55ED4F0066C77F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1D8E6C49352546E6AE3A4045 /* AirMaps.xcodeproj */;
@@ -312,7 +305,6 @@
 		B3D931A1A57A45879B6E00DD /* libRNBlur.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNBlur.a; sourceTree = "<group>"; };
 		B8E1516A766042E992B57E3C /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		C7FEB3B044B24E43B97B6F1B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		D36C1278CC724B6CB1CA749C /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
 		D36C52FD68DF42C989548B4A /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,14 +470,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		407126F41E55EA550066C77F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				407126F81E55EA550066C77F /* libCodePush.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		4071274F1E55ED4F0066C77F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,7 +534,6 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				D36C1278CC724B6CB1CA749C /* CodePush.xcodeproj */,
 				1D8E6C49352546E6AE3A4045 /* AirMaps.xcodeproj */,
 				8549B51568B14058AE0AFC17 /* RNBlur.xcodeproj */,
 				D36C52FD68DF42C989548B4A /* RNVectorIcons.xcodeproj */,
@@ -726,10 +709,6 @@
 				{
 					ProductGroup = 4071274F1E55ED4F0066C77F /* Products */;
 					ProjectRef = 1D8E6C49352546E6AE3A4045 /* AirMaps.xcodeproj */;
-				},
-				{
-					ProductGroup = 407126F41E55EA550066C77F /* Products */;
-					ProjectRef = D36C1278CC724B6CB1CA749C /* CodePush.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
@@ -940,13 +919,6 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		407126F81E55EA550066C77F /* libCodePush.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCodePush.a;
-			remoteRef = 407126F71E55EA550066C77F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		407127531E55ED4F0066C77F /* libAirMaps.a */ = {

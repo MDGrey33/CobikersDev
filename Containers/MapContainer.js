@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
+    Animated,
     StyleSheet,
 } from 'react-native';
 
@@ -16,7 +17,11 @@ class MapContainer extends Component {
 
         super(props);
 
-        console.log("test");
+        this.state = {
+            following: true,
+            recenter_bottom: new Animated.Value(-100),
+        }
+
     }
 
     addPolice() {
@@ -30,6 +35,7 @@ class MapContainer extends Component {
                     timestamp: position.timestamp,
                 }
 
+                this.reCenter();
                 this.props.remote.setPins(location, "police");
             },
             (error) => alert(JSON.stringify(error)),
@@ -49,6 +55,7 @@ class MapContainer extends Component {
                     timestamp: position.timestamp,
                 }
 
+                this.reCenter();
                 this.props.remote.setPins(location, "radar");
             },
             (error) => alert(JSON.stringify(error)),
@@ -56,6 +63,30 @@ class MapContainer extends Component {
         );
 
     }
+
+    onLocationChange(data) {
+        
+        if (this.state.following) {
+            this.setState({ following: false, });
+            this.animateRecenter(true);
+        }
+
+    }
+
+    reCenter() {
+
+        this.setState({ following: true,});
+        this.animateRecenter(false);
+
+    }
+
+    animateRecenter(open) {
+        Animated.timing(
+            this.state.recenter_bottom,
+            { toValue: open ? -5 : -100 }
+        ).start();
+    }
+
     render() {
 
         return (
@@ -63,8 +94,16 @@ class MapContainer extends Component {
                 <Map
                     provider="google"
                     mapType="hybrid"
+                    following={this.state.following}
+                    onLocationChange={(data) => this.onLocationChange(data)}
                     style={styles.map}
                     pins={this.props.pins} />
+
+                <Animated.View style={[styles.recenterContainer, {
+                    bottom: this.state.recenter_bottom,
+                }]}>
+                    <Button icon={"ios-locate-outline"} title={"RECENTER"} onPress={() => this.reCenter()} style={styles.radarButton} />
+                </Animated.View>
 
                 <View style={styles.buttonContainer}>
                     <Button icon={"md-camera"} title={"SPEED CAM"} onPress={() => this.addRadar()} style={styles.radarButton} />
@@ -77,27 +116,41 @@ class MapContainer extends Component {
 
 }
 
-/*
-    
-        */
 var styles = StyleSheet.create({
     buttonContainer: {
-        backgroundColor:"#FFFFFFAA",
+        backgroundColor: "#FFFFFFAA",
         position: "absolute",
-        flexDirection:"row",
+        flexDirection: "row",
         right: 20,
         bottom: -5,
-        padding:5,
+        padding: 5,
         borderRadius: 5,
-        borderWidth:StyleSheet.hairlineWidth,
-        borderColor:"#AAAAAADD",
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: "#AAAAAADD",
         shadowColor: "black",
         shadowOffset: {
-            width:2,
-            height:2,
+            width: 2,
+            height: 2,
         },
-        shadowOpacity:0.2,
-        shadowRadius:2,  
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
+    },
+    recenterContainer: {
+        backgroundColor: "#FFFFFFAA",
+        position: "absolute",
+        flexDirection: "row",
+        left: 20,
+        padding: 5,
+        borderRadius: 5,
+        borderWidth: StyleSheet.hairlineWidth,
+        borderColor: "#AAAAAADD",
+        shadowColor: "black",
+        shadowOffset: {
+            width: 2,
+            height: 2,
+        },
+        shadowOpacity: 0.2,
+        shadowRadius: 2,
     },
     content: {
         flex: 1,

@@ -8,7 +8,7 @@ import {
 
 import MapContainer from './Containers/MapContainer.js';
 //import Orientation from 'react-native-orientation';
-import codePush from "react-native-code-push";
+//import codePush from "react-native-code-push";
 
 import Remote from './Remote';
 
@@ -53,10 +53,11 @@ class App extends Component {
 
 
     _orientationDidChange(orientation) {
-
+        /*
         if (this.current_orientation != orientation) {
             codePush.restartApp();
         }
+        */
 
     }
 
