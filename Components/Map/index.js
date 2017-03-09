@@ -44,6 +44,24 @@ class Map extends Component {
 
     }
 
+    animateToCoordinate() {
+        
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+
+                var location = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                }
+                
+                this._map.animateToCoordinate(location, 200);
+
+            },
+            (error) => alert(JSON.stringify(error)),
+            { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+        );
+    }
+
     renderPins(pins) {
 
         var data = [];
@@ -69,7 +87,7 @@ class Map extends Component {
     }
 
     onRegionChange(event) {
-        console.log("event");
+
         /*
          * Override the users current location with the maps position
          * this enables pins to show up where the user has panned
@@ -81,10 +99,11 @@ class Map extends Component {
     }
 
     render() {
-        
+
         return (
             <View style={styles.container}>
                 <MapView
+                    ref={(x) => this._map = x}
                     provider={PROVIDER_DEFAULT}
                     style={styles.map}
                     scrollEnabled={!this.props.following}

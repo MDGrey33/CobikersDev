@@ -75,7 +75,8 @@ class MapContainer extends Component {
 
     reCenter() {
 
-        this.setState({ following: true,});
+        this.setState({ following: true,});)
+        this._map.animateToCoordinate()
         this.animateRecenter(false);
 
     }
@@ -92,6 +93,7 @@ class MapContainer extends Component {
         return (
             <View style={styles.content}>
                 <Map
+                    ref={(x) => this._map = x}
                     provider="google"
                     mapType="hybrid"
                     following={this.state.following}
