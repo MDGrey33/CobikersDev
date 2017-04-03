@@ -75,7 +75,7 @@ class MapContainer extends Component {
 
     reCenter() {
 
-        this.setState({ following: true,});)
+        this.setState({ following: true,});
         this._map.animateToCoordinate()
         this.animateRecenter(false);
 
