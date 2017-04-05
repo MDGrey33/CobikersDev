@@ -53,7 +53,7 @@ class Remote {
     }
 
     updateQueryLocation(location){
-
+        
         this.geoQuery.updateCriteria({
             center: [location.lat, location.long],
             radius: radius

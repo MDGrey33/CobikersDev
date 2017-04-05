@@ -57,7 +57,7 @@ class Map extends Component {
                 this._map.animateToCoordinate(location, 200);
 
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => false,
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
     }

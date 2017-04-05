@@ -38,7 +38,7 @@ class MapContainer extends Component {
                 this.reCenter();
                 this.props.remote.setPins(location, "police");
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => false,
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
 
@@ -58,7 +58,7 @@ class MapContainer extends Component {
                 this.reCenter();
                 this.props.remote.setPins(location, "radar");
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => false,
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
 

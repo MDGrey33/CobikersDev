@@ -77,7 +77,7 @@ class App extends Component {
                 this.remote.setInitialLocation(location);
 
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => false,
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
 
@@ -101,7 +101,7 @@ class App extends Component {
                 this.remote.updateQueryLocation(location);
 
             },
-            (error) => alert(JSON.stringify(error)),
+            (error) => false,
             { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
 
