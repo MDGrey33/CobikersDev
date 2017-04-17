@@ -10,6 +10,8 @@ const firebaseConfig = {
     messagingSenderId: "207559563521"
 };
 
+import _ from "lodash"
+
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const radius = 11;
@@ -19,8 +21,8 @@ const TIMEOUT = 60000//6 * 3600000;
 
 class Remote {
 
-    constructor(onEntered = null){
-        
+    constructor(onEntered = null) {
+
         //Init firebase
         this.firebaseRef = firebaseApp.database().ref();
 
@@ -37,7 +39,7 @@ class Remote {
     }
 
     //Initializes the geo query data
-    setInitialLocation(location){
+    setInitialLocation(location) {
 
         this.geoQuery = this.geoFire.query({
             center: [location.lat, location.long],
@@ -52,28 +54,31 @@ class Remote {
 
     }
 
-    updateQueryLocation(location){
-        
-        this.geoQuery.updateCriteria({
-            center: [location.lat, location.long],
-            radius: radius
-        });
+    updateQueryLocation(location) {
+
+
+        if (location && _.get(this, "geoQuery.updateCriteria", false)) {
+            this.geoQuery.updateCriteria({
+                center: [location.lat, location.long],
+                radius: radius
+            });
+        }
 
 
     }
 
-    updateVisiblePins(key, location, distance){
-    
+    updateVisiblePins(key, location, distance) {
+
         var timestamp = key.split("_")[1];
-        if(this.isPinOld(timestamp)){
+        if (this.isPinOld(timestamp)) {
 
             this.removePins(key);
 
-        }else{
+        } else {
 
-            if(this.onEntered){
+            if (this.onEntered) {
                 this.onEntered(key, location, distance);
-            }else{
+            } else {
                 console.warn("No onEntered callback found!");
             }
 
@@ -82,7 +87,7 @@ class Remote {
     }
 
     //Saves a pin
-    setPins(location,type){
+    setPins(location, type) {
 
         var timestamp = type + "_" + location.timestamp;
         timestamp = timestamp.toString();
@@ -97,7 +102,7 @@ class Remote {
     }
 
     //Checks if the pin has timed out 
-    isPinOld(key){
+    isPinOld(key) {
 
         var now = new Date();
 
@@ -106,7 +111,7 @@ class Remote {
     }
 
     //Removes an old pin so others won't see it
-    removePins(key){
+    removePins(key) {
 
         this.geoFire.remove(key).then(() => {
             console.log("Provided key has been removed from GeoFire");
