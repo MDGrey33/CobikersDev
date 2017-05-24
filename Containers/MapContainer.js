@@ -89,7 +89,6 @@ class MapContainer extends Component {
     }
 
     render() {
-
         return (
             <View style={styles.content}>
                 <Map
