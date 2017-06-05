@@ -17,7 +17,8 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const radius = 11;
 
 //6 hours to delete a pin
-const TIMEOUT = 60000//6 * 3600000;
+const TIMEOUT_RADAR = 24 * 3600000;//60000//6 * 3600000;
+const TIMEOUT_POLICE = 4 * 3600000;
 
 class Remote {
 
@@ -70,7 +71,8 @@ class Remote {
     updateVisiblePins(key, location, distance) {
 
         var timestamp = key.split("_")[1];
-        if (this.isPinOld(timestamp)) {
+        var type = key.split("_")[0]
+        if (this.isPinOld(timestamp,type)) {
 
             this.removePins(key);
 
@@ -102,11 +104,11 @@ class Remote {
     }
 
     //Checks if the pin has timed out 
-    isPinOld(key) {
+    isPinOld(key,type) {
 
         var now = new Date();
-
-        return now.getTime() - key > TIMEOUT;
+        
+        return now.getTime() - key > (type == "radar" ? TIMEOUT_RADAR : TIMEOUT_POLICE);
 
     }
 
