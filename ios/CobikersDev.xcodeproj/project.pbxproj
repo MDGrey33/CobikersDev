@@ -35,6 +35,7 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* CobikersDevTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CobikersDevTests.m */; };
 		32128ED48CFA453393A9AABF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A1802ADE3824D0CB76DDEEB /* libz.tbd */; };
+		40441A5E1EEBDEC400C30343 /* siren.wav in Resources */ = {isa = PBXBuildFile; fileRef = 40441A5D1EEBDEC400C30343 /* siren.wav */; };
 		407127A41E55F0BA0066C77F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 407127A31E55F0BA0066C77F /* Images.xcassets */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6781C81DFD614B4D8A40A52B /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 75BC05FF4CC049E7B9F29519 /* Ionicons.ttf */; };
@@ -307,6 +308,7 @@
 		2D02E47B1E0B4A5D006451C7 /* CobikersDev-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CobikersDev-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* CobikersDev-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CobikersDev-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EF3787587F4347BC8FAC87 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
+		40441A5D1EEBDEC400C30343 /* siren.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = siren.wav; sourceTree = "<group>"; };
 		407127A31E55F0BA0066C77F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4452DD213DB0462DAA5D1B17 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		4BA7347C79224A369A90EA45 /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				40441A5D1EEBDEC400C30343 /* siren.wav */,
 				13B07FAE1A68108700A75B9A /* CobikersDev */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* CobikersDevTests */,
@@ -1052,6 +1055,7 @@
 				BC1D11EBE7C54A3598A9C9C6 /* EvilIcons.ttf in Resources */,
 				91B4E36AEB57473991269511 /* FontAwesome.ttf in Resources */,
 				165BF594187744AAB02883F5 /* Foundation.ttf in Resources */,
+				40441A5E1EEBDEC400C30343 /* siren.wav in Resources */,
 				6781C81DFD614B4D8A40A52B /* Ionicons.ttf in Resources */,
 				DA9D34A09C6F4CB185F52F44 /* MaterialCommunityIcons.ttf in Resources */,
 				767909145C35417C9024F0DE /* MaterialIcons.ttf in Resources */,

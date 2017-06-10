@@ -10,6 +10,8 @@ const firebaseConfig = {
     messagingSenderId: "207559563521"
 };
 
+import Sound from 'react-native-sound';
+
 import _ from "lodash"
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -17,9 +19,9 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 const radius = 11;
 
 //6 hours to delete a pin
-const TIMEOUT_RADAR = 24 * 3600000;//60000//6 * 3600000;
-const TIMEOUT_POLICE = 4 * 3600000;
-
+const TIMEOUT_RADAR = 24 * 3600000;//24 hours
+const TIMEOUT_POLICE = 4 * 3600000;//4 hours
+const SIREN_TIMEOUT = 10 * 10000; //10 seconds
 class Remote {
 
     constructor(onEntered = null) {
@@ -37,6 +39,19 @@ class Remote {
         //Initialize the callback for data updates to the views
         this.onEntered = onEntered;
 
+        //Create the sound file
+        this.siren = new Sound('siren.wav', Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log('failed to load the sound', error);
+                return;
+            }
+            // loaded successfully
+            console.log('duration in seconds: ' + this.siren.getDuration() + 'number of channels: ' + this.siren.getNumberOfChannels());
+        });
+        //This is needed to check if the pin that has just entered was just placed by the same user
+        this.last_insert_time = 0;
+
+
     }
 
     //Initializes the geo query data
@@ -49,6 +64,20 @@ class Remote {
 
         this.onKeyEnteredRegistration = this.geoQuery.on("key_entered", (key, location, distance) => {
             //console.log(key + " entered query at " + location + " (" + distance + " km from center)");
+            console.warn("Key enetered!!!!")
+
+            var now = new Date();
+            // Play the sound with an onEnd callback
+            if (now > this.last_insert_time) {
+                this.siren.play((success) => {
+                    if (success) {
+                        console.log('successfully finished playing');
+                    } else {
+                        console.log('playback failed due to audio decoding errors');
+                    }
+                });
+            }
+
             this.updateVisiblePins(key, location, distance);
 
         });
@@ -72,7 +101,7 @@ class Remote {
 
         var timestamp = key.split("_")[1];
         var type = key.split("_")[0]
-        if (this.isPinOld(timestamp,type)) {
+        if (this.isPinOld(timestamp, type)) {
 
             this.removePins(key);
 
@@ -95,6 +124,8 @@ class Remote {
         timestamp = timestamp.toString();
         timestamp = timestamp.substring(0, timestamp.indexOf('.'));
 
+        this.last_insert_time = (new Date()) + SIREN_TIMEOUT;
+
         this.geoFire.set(timestamp, [location.lat, location.long]).then(() => {
             console.log("Provided key has been added to GeoFire");
         }, (error) => {
@@ -104,10 +135,10 @@ class Remote {
     }
 
     //Checks if the pin has timed out 
-    isPinOld(key,type) {
+    isPinOld(key, type) {
 
         var now = new Date();
-        
+
         return now.getTime() - key > (type == "radar" ? TIMEOUT_RADAR : TIMEOUT_POLICE);
 
     }
